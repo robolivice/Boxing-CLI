@@ -35,7 +35,7 @@ No external dependencies — everything runs on the standard library.
 ### Running the game
 
 ```bash
-python Boxing_Test_Build.py
+python "Boxing Release 5.3(Combat Part 3).py"
 ```
 
 ## Project Structure
