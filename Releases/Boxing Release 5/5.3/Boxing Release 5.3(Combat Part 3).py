@@ -18,7 +18,18 @@ while True:
 
     #Main game
     p_class = setup.class_s()
-    c_class = random.choice(list(combat.classes))
+    if dbg and DEBUG_OPTS["ai_class"]:
+        while True:
+            c_class = input("Debug - AI Class: ").lower().strip()
+            if c_class not in combat.classes:
+                print("Error. Not a Valid Class")
+                time.sleep(0.5)
+                for i in range(2):
+                    print("\033[A\r\033[K", end="")
+            else:
+                break
+    else:
+        c_class = random.choice(list(combat.classes))
 
     p_stats={"hits":0, "misses":0,"crits":0, "blocks":0, "combos": 0,"tdmg":0,"f_won": 0}
     c_stats={"hits":0, "misses":0,"crits":0, "blocks":0, "combos": 0,"tdmg":0,"f_won": 0}

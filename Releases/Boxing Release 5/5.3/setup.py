@@ -15,6 +15,7 @@ def debug_opts():
     opts["force_ai"] = input(" Force AI move manually? (y/n): ").lower() == "y"
     opts["show_state"] = input(" Show internal state each round? (y/n): ").lower() == "y"
     opts["god_stamina"] = input(" Disable stamina cost? (y/n): ").lower() == "y"
+    opts["ai_class"] = input(" Force AI Class? (y/n): ").lower() == "y"
     seed_in = input(" RNG seed (blank for none): ")
     opts["seed"] = int(seed_in) if seed_in.strip().isdigit() else None
     return opts
