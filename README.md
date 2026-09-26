@@ -53,7 +53,7 @@ Each round, you'll be shown a move menu with the damage, accuracy, and stamina c
 
 ## Fighter Classes
 
-| Class | Damage | Accuracy | Stamina Use | HP | Crit |
+| Class | Damage | Accuracy | Stamina Use | HP | Crit Chance |
 |---|---|---|---|---|---|
 | Berserker | x1.25 | x0.90 | x1.10 | x1.00 | x1.20 |
 | Assassin | x0.90 | x1.20 | x1.00 | x1.00 | x1.30 |
