@@ -1,6 +1,6 @@
 # Boxing CLI
 
-### BIG UPDATE COMING SOON!!!
+### UPDATE 6 IS HERE!!!
 
 A terminal-based, turn-based boxing game — Player vs. Computer, fought to a knockout across a best-of-3 match. Pick a fighter class, choose your moves each round, and manage stamina, combos, and special tactics (feints, taunts, counters) to take down the AI.
 
@@ -32,7 +32,11 @@ git clone https://github.com/robolivice/Boxing-CLI.git
 cd Boxing-CLI
 ```
 
-No external dependencies — everything runs on the standard library.
+Recommended Installation of ```curses``` module for the Menu for Windows Users for Boxing-CLI Version 6.x and up.
+
+```bash
+pip install -r requirements.txt
+```
 
 ### Running the game
 
