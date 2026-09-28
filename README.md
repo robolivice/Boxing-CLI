@@ -1,8 +1,8 @@
 # Boxing CLI
 
-A terminal-based, turn-based boxing game — Player vs. Computer, fought to a knockout across a best-of-3 match. Pick a fighter class, choose your moves each round, and manage stamina, combos, and special tactics (feints, taunts, counters) to take down the AI.
-
 ### BIG UPDATE COMING SOON!!!
+
+A terminal-based, turn-based boxing game — Player vs. Computer, fought to a knockout across a best-of-3 match. Pick a fighter class, choose your moves each round, and manage stamina, combos, and special tactics (feints, taunts, counters) to take down the AI.
 
 ## Features
 
