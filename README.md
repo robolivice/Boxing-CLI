@@ -41,7 +41,7 @@ pip install -r requirements.txt
 ### Running the game
 
 ```bash
-python "Boxing Release 5.3(Combat Part 3).py"
+python "6.1.py"
 ```
 
 ## Project Structure
