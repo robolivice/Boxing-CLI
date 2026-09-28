@@ -16,14 +16,22 @@ A terminal-based, turn-based boxing game — Player vs. Computer, fought to a kn
 - **Fatigue system** — running low on stamina costs you accuracy and damage.
 - **Three difficulty levels** — Easy, Medium, and Hard AI, each with progressively smarter move weighting, combo lookahead, and awareness of your patterns.
 - **Best-of-3 Match structure** — Match → Fight → Round. Each Fight is fought to a KO; first to 2 Fight wins takes the Match. A drawn Fight doesn't end the match undecided — Fights keep going until someone wins.
-- **Debug mode** — force specific moves, dump internal round-by-round state, disable stamina costs, and seed the RNG for reproducible testing.
+- **Debug mode** — force specific moves, dump internal round-by-round state, disable stamina costs, and seed the RNG for reproducible testing, force Computer's class. Any games with debug mode are not saved.
 - **End-of-match stats** — hits, misses, crits, blocks, combos, total damage dealt, and fights won, for both fighters.
+- **Main menu** — arrow-key menu with New Game, Load Save, Delete Save, and Exit. If your terminal doesn't support `curses`, it falls back to a simple numbered text menu automatically.
+- **Multiple save slots** — create as many named saves as you like (a-z, 0-9, `_` or `-`, up to 20 characters). Load one to continue, or delete one (with a confirmation prompt). Each save keeps its own stats.
+- **Persistent stats** — every completed Match is recorded to your save: lifetime hits, misses, crits, blocks, combos, damage dealt and taken, rounds fought, Fight and Match records, win rate, and win streaks (current and best). Debug matches are never recorded.
+- **Detailed records** — your save also tracks results per class you play, per class you face, and per difficulty, plus how often you use each move and personal bests (biggest hit, most damage in a Match, quickest KO, longest Match).
+- **Save summary** — loading a save shows your Matches played, win rate, streak, and most used class and move before you start.
+- **Safe saving** — saves are written atomically so a crash mid-write can't wreck them. A corrupted save is backed up as `.bak` and you're told about it. An older single-file `player_stats.json` is migrated into the new save system automatically.
+- **Quit to menu** — press `Q` at class selection to go back to the main menu. Ctrl+C exits the game cleanly.
 
 ## Getting Started
 
 ### Prerequisites
 
 - Python 3.x
+- curses 2.4.2 (For Windows Only)
 
 ### Installation
 
@@ -48,10 +56,12 @@ python "6.1.py"
 
 | File | Responsibility |
 |---|---|
-| `Boxing Release 5.3(Combat Part 3).py` | Main loop — owns Match/Fight/Round state, debug-mode setup, and class selection. |
-| `combat.py` | Core mechanics — move/combo/debuff/class data tables and the per-attack resolver (`r_turn`). |
+| `6.1.py` | Main loop: the menu → save selection → Match/Fight/Round flow, Match/Fight/Round state, debug-mode setup, and class selection. |
+| `combat.py` | Core mechanics: move/combo/debuff/class data tables and the per-attack resolver (`r_turn`). |
 | `setup.py` | Debug-mode prompts, class and difficulty selection, and the computer AI (`comp_AI`). |
-| `UI.py` | Player move menu, HP/stamina/combo-cooldown bar rendering, status effects, and end-of-match stats display. |
+| `UI.py` | Title banner, player move menu, HP/stamina/combo-cooldown bar rendering, status effects, and end-of-match stats display. |
+| `menu.py` | Arrow-key `curses` menu used for the main menu and the save picker, with a numbered text fallback when `curses` isn't available. |
+| `saves.py` | JSON persistence: one file per save in `saves/`, stats and streak recording, atomic writes, corrupt-save backup, and legacy save migration. |
 
 ## How to Play
 
@@ -70,7 +80,8 @@ Each round, you'll be shown a move menu with the damage, accuracy, and stamina c
 ## Roadmap
 
 - [x] Best-of-3 Match structure (Match → Fight → Round)
-- [ ] Persistent stats/streak tracking (across sessions)
+- [x] Persistent stats/streak tracking (across sessions)
+- [ ] Options Menu (Settings) and Module Splitting
 - [ ] Career/ladder mode (sequential opponents, per-boxer AI, boss fight)
 - [ ] Sound
 - [ ] Local (hot-seat) multiplayer
