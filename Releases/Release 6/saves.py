@@ -3,9 +3,15 @@ import json
 import os
 import copy
 import re
+import sys
 
 version = 1
-folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), "saves")
+if getattr(sys, 'frozen', False):
+    base_dir = os.path.dirname(sys.executable)
+else:
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+folder = os.path.join(base_dir, "saves")
+
 path = ""
 corrupt = False
 
