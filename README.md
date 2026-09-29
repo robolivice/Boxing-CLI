@@ -38,13 +38,13 @@ A terminal-based, turn-based boxing game — Player vs. Computer, fought to a kn
 #### Windows:
 Go to Releases and download the latest Release. Nothing else needs to be downloaded.
 
-If using cmd in windows:
+#### Terminal:
 
 ```bash
 git clone https://github.com/robolivice/Boxing-CLI.git
 cd Boxing-CLI
 ```
-Recommended Installation of ```curses``` module for the Menu for Boxing-CLI Version 6.x and up.
+Recommended Installation of ```curses``` module for the Menu for Boxing-CLI Version 6.x and up for terminal version. (Windows Users)
 
 ```bash
 pip install -r requirements.txt
