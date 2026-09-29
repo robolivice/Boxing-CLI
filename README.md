@@ -35,18 +35,29 @@ A terminal-based, turn-based boxing game — Player vs. Computer, fought to a kn
 
 ### Installation
 
+Windows:
+Go to Releases and download the latest Release. Nothing else needs to be downloaded.
+
 ```bash
 git clone https://github.com/robolivice/Boxing-CLI.git
 cd Boxing-CLI
 ```
 
-Recommended Installation of ```curses``` module for the Menu for Windows Users for Boxing-CLI Version 6.x and up.
+If using cmd in windows:
+Recommended Installation of ```curses``` module for the Menu for Boxing-CLI Version 6.x and up.
 
 ```bash
 pip install -r requirements.txt
 ```
 
 ### Running the game
+
+Double Click the downloaded .exe file (Windows)
+Or Navigate to the Foldere where the exe is stored and run this. (Save Name depends on the release)
+
+```bash
+6.1.exe
+```
 
 ```bash
 python "6.1.py"
