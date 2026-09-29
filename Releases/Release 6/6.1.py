@@ -1,4 +1,3 @@
-#Boxingpy Test build
 import time, os, random, combat, UI, setup, saves, menu, sys
 from collections import deque
 
