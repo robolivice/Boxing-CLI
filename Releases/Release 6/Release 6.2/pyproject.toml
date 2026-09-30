@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "boxing-cli"
-version = "6.0.0"
+version = "6.2.0"
 description = "Terminal boxing game"
 requires-python = ">=3.9"
 dependencies = ['windows-curses; sys_platform == "win32"']
