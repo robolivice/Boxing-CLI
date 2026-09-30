@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "boxing-cli"
+version = "6.0.0"
+description = "Terminal boxing game"
+requires-python = ">=3.9"
+dependencies = ['windows-curses; sys_platform == "win32"']
+
+[project.scripts]
+boxing = "boxing.main:main"
+
+[tool.setuptools.packages.find]
+include = ["boxing*"]
+
+[tool.setuptools.package-data]
+boxing = ["assets/*.txt"]
