@@ -15,7 +15,7 @@ def _user_dir():
     if os.name == "nt":
         base = os.environ.get("APPDATA") or os.path.expanduser("~")
         return os.path.join(base, app_n)
-    return os.path.join(os.path.expanduser("~"), "." + APP_NAME)
+    return os.path.join(os.path.expanduser("~"), "." + app_n)
 
 def _data_dir():
     override = os.environ.get("BOXING_HOME")
