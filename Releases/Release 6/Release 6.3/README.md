@@ -50,6 +50,9 @@ pip install .
 boxing
 ```
 
+> [!IMPORTANT]
+> **`Release 6.3` is the last folder in the old per-version layout.** From **7.x onwards, individual releases will no longer be uploaded as folders** under `Releases/` — the code for each version is published in a new folder named **`Boxing Version 7.x`** instead. **`.exe` files are still uploaded** to the [Releases](../../releases) page for every version, so running the executable is how you play.
+
 ## Data location
 
 | How you run it | Saves and settings |
