@@ -14,14 +14,11 @@ C_WARN = 3
 C_OK = 4
 C_BAD = 5
 C_VAL = 6
-C_OK_HL = 7
-C_BAD_HL = 8
-C_VAL_HL = 9
 
 STYLES = {
-    "ok": (C_OK, C_OK_HL),
-    "bad": (C_BAD, C_BAD_HL),
-    "val": (C_VAL, C_VAL_HL),
+    "ok": C_OK,
+    "bad": C_BAD,
+    "val": C_VAL,
 }
 
 def _plain(item):
@@ -48,14 +45,11 @@ def _init_pairs():
     if not curses.has_colors():
         return False
     curses.init_pair(C_TITLE, curses.COLOR_CYAN, curses.COLOR_BLACK)
-    curses.init_pair(C_HL, curses.COLOR_BLACK, curses.COLOR_CYAN)
+    curses.init_pair(C_HL, curses.COLOR_CYAN, curses.COLOR_BLACK)
     curses.init_pair(C_WARN, curses.COLOR_RED, curses.COLOR_BLACK)
     curses.init_pair(C_OK, curses.COLOR_GREEN, curses.COLOR_BLACK)
     curses.init_pair(C_BAD, curses.COLOR_RED, curses.COLOR_BLACK)
     curses.init_pair(C_VAL, curses.COLOR_YELLOW, curses.COLOR_BLACK)
-    curses.init_pair(C_OK_HL, curses.COLOR_BLACK, curses.COLOR_GREEN)
-    curses.init_pair(C_BAD_HL, curses.COLOR_BLACK, curses.COLOR_RED)
-    curses.init_pair(C_VAL_HL, curses.COLOR_BLACK, curses.COLOR_YELLOW)
     return True
 
 def _attr(style, hl, col):
@@ -65,14 +59,18 @@ def _attr(style, hl, col):
         if style == "dim":
             return curses.A_DIM
         return curses.A_NORMAL
-    base = curses.color_pair(C_HL) if hl else curses.A_NORMAL
     if style is None:
-        return base
+        if hl:
+            return curses.color_pair(C_HL) | curses.A_BOLD
+        return curses.A_NORMAL
     if style == "dim":
-        return base | curses.A_DIM
+        return curses.A_DIM
     if style in STYLES:
-        return curses.color_pair(STYLES[style][1] if hl else STYLES[style][0])
-    return base
+        a = curses.color_pair(STYLES[style])
+        if hl:
+            a |= curses.A_BOLD
+        return a
+    return curses.A_NORMAL
 
 def _put(cr, y, x, text, attr):
     if text == "":
